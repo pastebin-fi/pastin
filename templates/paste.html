@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block main %}
+<nav>
+  <a href="{{ url_for("get_raw_paste", paste_id=paste.id) }}" class="p-button--brand is-small">Raaka</a>
+</nav>
+<hr>
+<div class="paste">
+  <h2>{{ paste.name }}</h2>
+  <pre>{{ paste.contents }}</pre>
+</div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block main %}
+<div class="row">
+  <div class="col-8">
+    <div class="paste">
+      <form class="" action="{{ url_for('new_paste') }}" method="post">
+        {{ paste_form.hidden_tag() }}
+        {{ paste_form.name(placeholder="Nimi...") }}
+        {{ paste_form.contents(rows="15", placeholder="Hei maailma!") }}
+        <label class="p-checkbox">
+          {{ paste_form.private(class="p-checkbox__input") }}
+          <span class="p-checkbox__label" id="private">Yksityinen</span>
+        </label>
+        {{ hcaptcha }}
+        <br>
+        <input type="submit" class="p-button--positive" value="Luo">
+      </form>
+    </div>
+  </div>
+  <div class="col-4">
+    <h2>Uusimmat liitteet</h2>
+    {% for paste in latest_pastes %}
+      <div class="p-card">
+        <a href="{{ url_for("get_paste", paste_id=paste.id) }}"><p class="p-card__content">{{ paste.name|truncate(50, true) }}</p></a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% if config.HCAPTCHA_ENABLED %}
+<noscript>
+  <hr>
+  <i>
+    JavaScript vaaditaan, jotta hCaptcha toimii. Et voi tehdä uutta pastea ilman JavaScriptiä.
+  </i>
+</noscript>
+{% endif %}
+
+<script>
+  var textareas = document.getElementsByTagName('textarea');
+  var count = textareas.length;
+  for(var i=0;i<count;i++){
+      textareas[i].onkeydown = function(e){
+          if(e.keyCode==9 || e.which==9){
+              e.preventDefault();
+              var s = this.selectionStart;
+              this.value = this.value.substring(0,this.selectionStart) + "\t" + this.value.substring(this.selectionEnd);
+              this.selectionEnd = s+1;
+          }
+      }
+  }
+</script>
+{% endblock %}

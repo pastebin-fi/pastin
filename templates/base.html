@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fi" dir="ltr">
+  <head>
+    {% block head %}
+    <meta charset="utf-8">
+    {% if paste is defined %}
+    <title>{{ paste.name }} - {{ config.SHORT_NAME }}</title>
+    <meta property="og:title" content="{{ paste.name }}" />
+    {% else %}
+    <title>{{ config.FULL_NAME}}</title>
+    <meta property="og:title" content="{{ config.FULL_NAME }}" />
+    {% endif %}
+    <meta name="description" content="{{ config.DESCRIPTION }}" />
+    <meta property="og:description" content="{{ config.DESCRIPTION }}" />
+    <meta name="keywords" content="{{ config.KEYWORDS }}">
+    <meta property="og:site_name" content="{{ config.FULL_NAME }}" />
+    <meta property="og:url" content="{{ config.URL }}{{ request.path }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/vanilla.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/img/favicon.svg">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+    <meta name="theme-color" content="#333333">
+    {% endblock %}
+  </head>
+  <body>
+    {% include "header.html" %}
+    {% include "messages.html" %}
+    <div class="main">
+      {% block main %}{% endblock %}
+    </div>
+  </body>
+</html>

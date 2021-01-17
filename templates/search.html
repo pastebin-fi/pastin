@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block main %}
+{% if pastes|length > 0 %}
+  {% for paste in pastes %}
+  <a href="{{ url_for("get_paste", paste_id=paste.id) }}"><h2>{{ paste.name }}</h2></a>
+    <p>{{ paste.contents|truncate }}</p>
+    <hr>
+  {% endfor %}
+{% else %}
+  <center>Kyselyllesi ei löytynyt mitään. Kokeile muokata sitä hieman.</center>
+{% endif %}
+{% endblock %}

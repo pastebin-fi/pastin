@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block main %}
+{% filter markdown %}
+{{ data }}
+{% endfilter %}
+{% endblock %}

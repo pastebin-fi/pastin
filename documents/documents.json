@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Ominaisuudet",
+    "url": "/features/",
+    "id": "features",
+    "file": "documents/features.md",
+    "visible": false
+  },
+  {
+    "name": "Tietoa",
+    "url": "/about/",
+    "id": "about",
+    "file": "documents/about.md",
+    "visible": true
+  },
+  {
+    "name": "Yksityisyys",
+    "url": "/privacy/",
+    "id": "privacy",
+    "file": "documents/privacy.md",
+    "visible": true
+  }
+]

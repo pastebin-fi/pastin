@@ -1,0 +1,12 @@
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+  <div class="notifications">
+    {% for category, message in messages %}
+      <div class="p-notification--{{ category }} notification" id="notification-{{ loop.index }}">
+        <p class="p-notification__response">{{ message }}</p>
+        <span class="p-icon--close" onclick="document.getElementById('notification-{{ loop.index }}').style.display = 'none'" style="cursor: pointer"></span>
+      </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+{% endwith %}
