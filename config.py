@@ -1,13 +1,18 @@
 from configparser import ConfigParser
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+load_dotenv(verbose=True)
 
 ini = ConfigParser()
 ini.read_file(open("config.ini", "r", encoding="utf-8"))
-db = ini["db"]
 
 config = {}
 
-config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://" + db["user"] + ":" \
-        + db["password"] + "@" + db["host"] + "/" + db["db"] \
+config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://" + os.getenv("DB_USER") + ":" \
+        + os.getenv("DB_PASSWORD") + "@" + os.getenv("DB_HOST") + "/" + os.getenv("DB_DB") \
         + "?charset=utf8mb4"
 config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 

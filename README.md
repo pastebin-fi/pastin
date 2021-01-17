@@ -11,11 +11,18 @@ cd pastin/
 ```
 2. Install required packages `pip install -r requirements.txt`
 3. Copy file `defconfig.ini` to `config.ini` and make required changes
-4. Run the following command (run this also when updating pastin):
+4. Database configuration is in Environment variables. Here is an example `.env`-file:
+```env
+DB_USER = root
+DB_PASSWORD = password
+DB_HOST = localhost
+DB_DB = pastin
+```
+5. Run the following command (run this also when updating pastin):
 ```bash
 flask db upgrade
 ```
-5. Run the server `flask run`
+6. Run the server `flask run`
 
 ### Branching
 
