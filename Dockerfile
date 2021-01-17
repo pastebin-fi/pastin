@@ -19,8 +19,6 @@ COPY ./defconfig.ini /app/config.ini
 COPY ./nginx.conf /etc/nginx
 RUN chmod +x ./start.sh
 
-RUN rm .env
-
 EXPOSE 80
 
 CMD ["./start.sh"]
