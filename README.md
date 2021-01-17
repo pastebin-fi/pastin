@@ -9,6 +9,10 @@ Pastin is a pastebin service written in Python 3 using Flask.
 git clone https://github.com/pastebin-fi/pastin.git
 cd pastin/
 ```
+Docker:
+2. Edit `docker-compose.yml`
+3. Start the service `docker-compose up`
+Normal:
 2. Install required packages `pip install -r requirements.txt`
 3. Copy file `defconfig.ini` to `config.ini` and make required changes
 4. Database configuration is in Environment variables. Here is an example `.env`-file:
