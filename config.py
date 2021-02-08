@@ -16,8 +16,6 @@ config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://" + os.getenv("DB_USER") + 
         + "?charset=utf8mb4"
 config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-print("Connecting to MySQL", "\nUser:",os.getenv("DB_USER"),"\nPassword:",os.getenv("DB_PASSWORD"),"\nHost:",os.getenv("DB_HOST"),"\nDatabase:",os.getenv("DB_DB"))
-
 config.update(ini["hcaptcha"])
 config.update(ini["flask"])
 config.update(ini["http"])
