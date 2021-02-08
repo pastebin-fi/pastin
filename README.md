@@ -10,6 +10,7 @@ git clone https://github.com/pastebin-fi/pastin.git
 cd pastin/
 ```
 Docker:
+
 2. Edit `docker-compose.yml`
 3. Start the service `docker-compose up`
 Normal:
