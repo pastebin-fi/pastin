@@ -17,6 +17,7 @@
       </form>
     </div>
   </div>
+  {% if config["SHOW_LATEST_PASTES"] %}
   <div class="col-4">
     <h2>Uusimmat liitteet</h2>
     {% for paste in latest_pastes %}
@@ -25,6 +26,7 @@
       </div>
     {% endfor %}
   </div>
+  {% endif %}
 </div>
 
 {% if config.HCAPTCHA_ENABLED %}

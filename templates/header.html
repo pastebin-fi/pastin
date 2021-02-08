@@ -20,11 +20,13 @@
           {% endif %}
         {% endfor %}
       </ul>
+      {% if config["ENABLE_SEARCH"] %}
       <form class="p-search-box is-dark" action="{{ url_for("search_paste") }}">
         <input aria-label="search" type="search" class="p-search-box__input" placeholder="Hae julkisia pasteja" value="{{ query }}" name="q" autocomplete="on" required="">
         <button type="reset" class="p-search-box__reset"><i class="p-icon--close"></i></button>
         <button type="submit" class="p-search-box__button"><i class="p-icon--search"></i></button>
       </form>
+      {% endif %}
     </nav>
   </div>
 </header>

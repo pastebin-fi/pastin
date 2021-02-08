@@ -73,6 +73,8 @@ def get_raw_paste(paste_id):
 
 @app.route('/search/')
 def search_paste():
+    if not app.config["ENABLE_SEARCH"]:
+        return Response("I'm a teapot", mimetype="text/plain"), 418
     query = request.args.get("q")
     search = "%{}%".format(query)
     pastes = Paste.query.filter(or_(Paste.name.like(search), Paste.contents \
