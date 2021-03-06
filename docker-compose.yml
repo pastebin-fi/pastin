@@ -20,3 +20,8 @@ services:
       MYSQL_ROOT_PASSWORD: pastin
     volumes:
       - ./db:/docker-entrypoint-initdb.d/:ro
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8081:8080
