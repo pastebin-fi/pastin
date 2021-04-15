@@ -6,6 +6,8 @@
 <hr>
 <div class="paste">
   <h2>{{ paste.name }}</h2>
-  <pre>{{ paste.contents }}</pre>
+  <pre class="p-code-numbered">
+    {% for line in paste.contents.split('\n') %}<span class="p-code-numbered__line">{{ line }}</span> {% endfor %}
+  </pre>
 </div>
 {% endblock %}

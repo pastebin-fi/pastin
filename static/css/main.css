@@ -37,9 +37,23 @@ pre {
   width: 98%;
 }
 
+.p-code-numbered__line {
+  line-height: 0.9 !important;
+  overflow-x: visible;
+  white-space: pre;
+}
+
+.p-code-numbered {
+  line-height: 0 !important;
+}
+
 @media only screen and (max-width: 800px) {
   .main {
     max-width: 100%;
     margin-left: 3%;
   }
+
+  .p-code-numbered__line {
+    line-height: 1;
+  }  
 }
