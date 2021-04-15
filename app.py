@@ -22,7 +22,7 @@ def serve_static(path):
 
 @app.route('/')
 def index():
-    latest_pastes = Paste.query.order_by(desc(Paste.timestamp)).limit(5).all()
+    latest_pastes = Paste.query.order_by(desc(Paste.timestamp)).filter(Paste.private == False).limit(5).all()
     for paste in latest_pastes:
         paste.defaults()
     # TODO: Show latest pastes on all pages
