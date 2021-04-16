@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>Sisäinen palvelinvirhe</title>
+        <link rel="stylesheet" href="/css/vanilla.css" />
+        <style>
+.error-content {
+    width: 100%;
+    position: absolute;
+    top: 25%;
+}
+
+.error-code {
+    font-weight: bolder;
+    line-height: 1.2;
+    font-size: 64px;
+}
+
+p {
+    font-size: 24;
+}
+
+@media only screen and (max-width: 800px) {
+    .error-code {
+        font-size: 54px;
+    }
+}
+        </style>
+    </head>
+    <body>
+        <div class="error-content">
+            <center>
+                <h1 class="error-code">
+                    Virhe 500
+                    <br>
+                </h1>
+                <h2>
+                    Sisäinen palvelinvirhe
+                </h2>
+                <p>
+                    Palvelimella tapahtui virhe. Yritä pian uudelleen.
+                </p>
+                <button>
+                    <a href="{{ url_for("index") }}">Etusivu</a>
+                </button>
+            </center>
+        </div>
+    </body>
+</html>

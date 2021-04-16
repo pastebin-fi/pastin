@@ -17,6 +17,10 @@ def document_injector():
 def page_not_found(e):
     return render_template('404.html'), 404
 
+@app.errorhandler(500)
+def error_500(e):
+    return render_template("500.html"), 500
+
 @app.route('/<path:path>')
 def serve_static(path):
     return send_from_directory('static', path)
