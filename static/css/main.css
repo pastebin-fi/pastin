@@ -45,6 +45,7 @@ pre {
 
 .p-code-numbered {
   line-height: 0 !important;
+  overflow-y: hidden;
 }
 
 @media only screen and (max-width: 800px) {
