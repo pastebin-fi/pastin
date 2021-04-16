@@ -110,11 +110,11 @@ def api_paste():
     content = data["content"]
     private = data["private"]
 
-    if not isinstance(name, str) or not name:
+    if not isinstance(name, str) or not name or name.isspace():
         return jsonify({"error": "WRONG_TYPE_OR_NULL", "parameter": "name"}), \
                 400
 
-    if not isinstance(content, str) or not content:
+    if not isinstance(content, str) or not content or content.isspace():
         return jsonify({"error": "WRONG_TYPE_OR_NULL", "parameter": \
                 "content"}), 400
 
