@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block main %}
 <div class="row">
+  {% if not config["SHOW_LATEST_PASTES"] %}
+  <div class="col-2"></div>
+  {% endif %}
   <div class="col-8">
     <div class="paste">
       <form class="" action="{{ url_for('new_paste') }}" method="post">
