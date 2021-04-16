@@ -1,5 +1,6 @@
-from flask import abort, flash, Flask, redirect, render_template, Response, \
-        request, send_from_directory
+from flask import abort, flash, Flask, jsonify, redirect, render_template, \
+        Response, request, send_from_directory
+import json
 import random
 import string
 from sqlalchemy import desc, or_
@@ -82,6 +83,46 @@ def search_paste():
     for paste in pastes:
         paste.defaults()
     return render_template("search.html", pastes=pastes, query=query)
+
+# TODO: Make the API handling better
+
+# TODO: Authentication
+@app.route('/api/v0/paste', methods=["POST"])
+def api_paste():
+    letters = string.ascii_letters + string.digits
+    paste_id = ''.join(random.choice(letters) for i in range(12))
+
+    try:
+        data = json.loads(request.data)
+    except json.decoder.JSONDecodeError:
+        return jsonify({"error": "INVALID_JSON"}), 400
+    
+    for param in ("name", "content", "private"):
+        if not param in data:
+            return jsonify({"error": "MISSING_PARAMETER", "parameter": \
+                    param}), 400
+
+    name = data["name"]
+    content = data["content"]
+    private = data["private"]
+
+    if not isinstance(name, str) or not name:
+        return jsonify({"error": "WRONG_TYPE_OR_NULL", "parameter": "name"}), \
+                400
+
+    if not isinstance(content, str) or not content:
+        return jsonify({"error": "WRONG_TYPE_OR_NULL", "parameter": \
+                "content"}), 400
+
+    if not isinstance(private, bool):
+        return jsonify({"error": "WRONG_TYPE_OR_NULL", "parameter": \
+                "private"}), 400
+
+    paste = Paste(id=paste_id, contents=data["content"], \
+        name=data["name"], private=data["private"])
+    db.session.add(paste)
+    db.session.commit()
+    return jsonify({"id": paste_id})
 
 
 if __name__ == "__main__":
