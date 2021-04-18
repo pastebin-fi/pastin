@@ -9,7 +9,7 @@
       <form class="" action="{{ url_for('new_paste') }}" method="post">
         {{ paste_form.hidden_tag() }}
         {{ paste_form.name(placeholder="Nimi...") }}
-        {{ paste_form.contents(rows="15", placeholder="Hei maailma!") }}
+        {{ paste_form.content(rows="15", placeholder="Hei maailma!") }}
         <label class="p-checkbox">
           {{ paste_form.private(class="p-checkbox__input") }}
           <span class="p-checkbox__label" id="private">Yksityinen</span>
