@@ -81,7 +81,7 @@ def search_paste():
     if not app.config["ENABLE_SEARCH"]:
         return Response("I'm a teapot", mimetype="text/plain"), 418
     query = request.args.get("q")
-    search = "%{}%".format(query)
+    search = "%{}%".format(query.replace(" ", "%"))
     pastes = Paste.query.filter(or_(Paste.name.like(search), Paste.contents \
         .like(search))).filter(Paste.private == False).limit(10).all()
     for paste in pastes:
