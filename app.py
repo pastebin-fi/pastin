@@ -45,7 +45,7 @@ def new_paste():
     if form.validate():
         letters = string.ascii_letters + string.digits
         paste_id = ''.join(random.choice(letters) for i in range(12))
-        paste = Paste(id=paste_id, contents=form.contents.data, \
+        paste = Paste(id=paste_id, content=form.content.data, \
             name=form.name.data, private=form.private.data)
         db.session.add(paste)
         db.session.commit()
@@ -73,7 +73,7 @@ def get_raw_paste(paste_id):
     paste = Paste.query.filter_by(id=paste_id).first()
     if paste:
         paste.defaults()
-        return Response(paste.contents, mimetype="text/plain")
+        return Response(paste.content, mimetype="text/plain")
     return Response("Ei löytynyt - 404", mimetype="text/plain"), 404
 
 @app.route('/search/')
@@ -82,7 +82,7 @@ def search_paste():
         return Response("I'm a teapot", mimetype="text/plain"), 418
     query = request.args.get("q")
     search = "%{}%".format(query.replace(" ", "%"))
-    pastes = Paste.query.filter(or_(Paste.name.like(search), Paste.contents \
+    pastes = Paste.query.filter(or_(Paste.name.like(search), Paste.content \
         .like(search))).filter(Paste.private == False).limit(10).all()
     for paste in pastes:
         paste.defaults()
@@ -122,7 +122,7 @@ def api_paste():
         return jsonify({"error": "WRONG_TYPE_OR_NULL", "parameter": \
                 "private"}), 400
 
-    paste = Paste(id=paste_id, contents=data["content"], \
+    paste = Paste(id=paste_id, content=data["content"], \
         name=data["name"], private=data["private"])
     db.session.add(paste)
     db.session.commit()

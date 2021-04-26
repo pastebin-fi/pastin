@@ -10,13 +10,13 @@ class PasteForm(FlaskForm):
     # TODO: Localize error messages
     name = StringField(validators=[DataRequired(message= \
         "Pastella tulee olla nimi.")])
-    contents = TextAreaField(validators=[DataRequired(message= \
+    content = TextAreaField(validators=[DataRequired(message= \
         "Tyhjää pastea ei voida luoda.")])
     private = BooleanField()
 
 class Paste(db.Model):
     id = db.Column(db.String(16), primary_key=True)
-    contents = db.Column(db.UnicodeText)
+    content = db.Column(db.UnicodeText)
     # TODO: Localize default name
     name = db.Column(db.UnicodeText, default="Nimetön paste")
     private = db.Column(db.Boolean, default=True)
