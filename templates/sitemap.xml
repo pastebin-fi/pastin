@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://pastebin.fi/</loc>
+        <loc>{{ site_url }}</loc>
     </url>
     {% for paste in pastes %}
     <url>
-        <loc>https://pastebin.fi{{ url_for("get_paste", paste_id=paste.id) }}</loc>
+        <loc>{{ site_url }}{{ url_for("get_paste", paste_id=paste.id) }}</loc>
     </url>
     {% endfor %}
 </urlset>

@@ -93,7 +93,7 @@ def sitemap():
     pastes = Paste.query.order_by(desc(Paste.timestamp)).filter(Paste.private == False).all()
     for paste in pastes:
         paste.defaults()
-    return Response(render_template("sitemap.xml", pastes=pastes), mimetype='text/xml')
+    return Response(render_template("sitemap.xml", pastes=pastes, site_url=app.config["URL"]), mimetype='text/xml')
 
 # TODO: Make the API handling better
 
