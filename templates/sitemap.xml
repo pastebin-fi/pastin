@@ -5,7 +5,7 @@
     </url>
     {% for paste in pastes %}
     <url>
-        <loc>https://pastebib.fi{{ url_for("get_paste", paste_id=paste.id) }}</loc>
+        <loc>https://pastebin.fi{{ url_for("get_paste", paste_id=paste.id) }}</loc>
     </url>
     {% endfor %}
 </urlset>
