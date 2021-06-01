@@ -88,6 +88,13 @@ def search_paste():
         paste.defaults()
     return render_template("search.html", pastes=pastes, query=query)
 
+@app.route('/sitemap.xml')
+def sitemap():
+    pastes = Paste.query.order_by(desc(Paste.timestamp)).filter(Paste.private == False).all()
+    for paste in pastes:
+        paste.defaults()
+    return Response(render_template("sitemap.xml", pastes=pastes), mimetype='text/xml')
+
 # TODO: Make the API handling better
 
 # TODO: Authentication
