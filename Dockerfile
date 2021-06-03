@@ -20,4 +20,6 @@ RUN chmod +x ./start.sh
 
 EXPOSE 80
 
+RUN apt-get -y remove python3-dev build-essential
+
 CMD ["./start.sh"]
