@@ -30,6 +30,7 @@ DB_DB = pastin
 flask db upgrade
 ```
 6. Run the server `flask run`
+7. [optional] if you want to create large pastes run command `SET @@global.sql_mode= '';` on SQL server.
 
 ### Branching
 
