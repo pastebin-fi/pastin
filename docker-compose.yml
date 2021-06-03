@@ -23,8 +23,3 @@ services:
     volumes:
       - ./db_init.sql:/data/db_init.sql
       - ./db:/docker-entrypoint-initdb.d/:ro
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 8081:8080
