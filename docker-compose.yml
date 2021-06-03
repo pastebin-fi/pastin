@@ -22,6 +22,6 @@ services:
       MYSQL_ROOT_PASSWORD: pastin
     volumes:
       - ./db_init.sql:/data/db_init.sql
-      - ./db:/docker-entrypoint-initdb.d/:ro
+      - ./db:/var/lib/mysql/
     cap_add:
       - SYS_NICE
