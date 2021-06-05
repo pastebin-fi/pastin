@@ -100,6 +100,9 @@ def sitemap():
 # TODO: Authentication
 @app.route('/api/v0/paste', methods=["POST"])
 def api_paste():
+    if not app.config["ENABLE_API"]:
+        abort(403)
+
     letters = string.ascii_letters + string.digits
     paste_id = ''.join(random.choice(letters) for i in range(12))
 
