@@ -14,6 +14,7 @@ WORKDIR /app
 RUN pip install -r requirements.txt
 
 COPY . /app
+COPY ./defconfig.ini /app/config.ini
 
 COPY ./nginx.conf /etc/nginx
 RUN chmod +x ./start.sh
